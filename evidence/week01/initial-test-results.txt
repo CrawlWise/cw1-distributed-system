@@ -1,0 +1,27 @@
+PS C:\workspace\cw1-distributed-system\source> .\scripts\check.ps1
+go version go1.27.1 windows/amd64
+?       example.edu/6cc545/cw1/cmd/node [no test files]
+?       example.edu/6cc545/cw1/cmd/request      [no test files]
+ok      example.edu/6cc545/cw1/examples/firstfunction   2.182s
+--- FAIL: TestWeek01_OccupiedPort (0.00s)
+    app_test.go:23: want clear bind error, got TODO W01_CONFIG: validate configuration
+--- FAIL: TestWeek01_CancelledLifecycle (0.00s)
+    app_test.go:37: TODO W01_CONFIG: validate configuration
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/app     2.626s
+--- FAIL: TestWeek01_Config (0.00s)
+    config_test.go:17: valid configuration rejected: TODO W01_CONFIG: validate configuration
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/config  1.721s
+--- FAIL: TestWeek01_Health (0.00s)
+    health_test.go:29: incorrect health: 501 {"error":"TODO W01_HEALTH"}
+--- FAIL: TestWeek01_HealthWrongMethod (0.00s)
+    health_test.go:40: want 405 got 501
+FAIL
+FAIL    example.edu/6cc545/cw1/internal/httpapi 3.036s
+FAIL
+Exception: C:\workspace\cw1-distributed-system\source\scripts\check.ps1:8
+Line |
+   8 |      if ($LASTEXITCODE -ne 0) { throw "Tests failed" }
+     |                                 ~~~~~~~~~~~~~~~~~~~~
+     | Tests failed

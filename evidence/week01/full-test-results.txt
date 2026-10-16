@@ -1,0 +1,6 @@
+?   	example.edu/6cc545/cw1/cmd/node	[no test files]
+?   	example.edu/6cc545/cw1/cmd/request	[no test files]
+ok  	example.edu/6cc545/cw1/examples/firstfunction	2.004s
+ok  	example.edu/6cc545/cw1/internal/app	3.895s
+ok  	example.edu/6cc545/cw1/internal/config	1.284s
+ok  	example.edu/6cc545/cw1/internal/httpapi	2.347s

@@ -1,0 +1,8 @@
+=== RUN   TestSmoke_ParseHelp
+--- PASS: TestSmoke_ParseHelp (0.00s)
+=== RUN   TestWeek01_Config
+--- PASS: TestWeek01_Config (0.00s)
+=== RUN   TestWeek01_UnknownFlag
+--- PASS: TestWeek01_UnknownFlag (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/config	(cached)

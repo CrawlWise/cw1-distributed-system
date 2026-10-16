@@ -1,0 +1,18 @@
+flag provided but not defined: -unknown
+Usage of node:
+  -grpc string
+    	Week 5: gRPC address; empty disables
+  -http string
+    	HTTP listen address (default "127.0.0.1:8081")
+  -id string
+    	unique local node ID (default "node-a")
+  -seed string
+    	Week 3: synthetic metadata JSON file
+  -tcp string
+    	Week 4: TCP address; empty disables
+  -timeout duration
+    	network operation timeout (default 2s)
+  -udp string
+    	Week 4: UDP address; empty disables
+2026/10/16 13:51:22 configuration: flag provided but not defined: -unknown
+exit status 2

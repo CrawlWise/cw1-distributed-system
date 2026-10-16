@@ -1,0 +1,2 @@
+2026/10/16 13:51:32 configuration: timeout must be greater than zero and at most 30 seconds
+exit status 2

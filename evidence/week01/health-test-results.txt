@@ -1,0 +1,8 @@
+=== RUN   TestSmoke_JSONHelper
+--- PASS: TestSmoke_JSONHelper (0.00s)
+=== RUN   TestWeek01_Health
+--- PASS: TestWeek01_Health (0.00s)
+=== RUN   TestWeek01_HealthWrongMethod
+--- PASS: TestWeek01_HealthWrongMethod (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/httpapi	(cached)

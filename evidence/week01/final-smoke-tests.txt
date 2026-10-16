@@ -1,0 +1,17 @@
+?   	example.edu/6cc545/cw1/cmd/node	[no test files]
+?   	example.edu/6cc545/cw1/cmd/request	[no test files]
+=== RUN   TestSmoke_LabelExample
+--- PASS: TestSmoke_LabelExample (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/examples/firstfunction	0.869s
+testing: warning: no tests to run
+PASS
+ok  	example.edu/6cc545/cw1/internal/app	1.676s [no tests to run]
+=== RUN   TestSmoke_ParseHelp
+--- PASS: TestSmoke_ParseHelp (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/config	0.560s
+=== RUN   TestSmoke_JSONHelper
+--- PASS: TestSmoke_JSONHelper (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/httpapi	1.103s

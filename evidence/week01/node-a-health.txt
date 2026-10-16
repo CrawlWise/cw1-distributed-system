@@ -1,0 +1,3 @@
+HTTP 200
+Content-Type: application/json; charset=utf-8
+{"node_id":"node-a","status":"ok"}

@@ -1,0 +1,2 @@
+2026/10/16 13:51:01 configuration: invalid HTTP address: "0.0.0.0:8090"
+exit status 2
