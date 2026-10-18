@@ -379,3 +379,142 @@ The verification script completed successfully, reporting passing checks for the
 ### Conclusion
 
 The Week 1 implementation and testing objectives have been achieved. The verification script passed, although this does not establish complete test coverage. The remaining administrative activities are final evidence organization and creation of the Week 1 Git checkpoint.
+
+
+
+## Week 02 — REST API and JSON Status Resource
+
+**Date:** 18 October 2026  
+**Module:** 6CC545 — Distributed Applications and Web Services  
+**Milestone:** Week 02 — Design and test a JSON REST resource
+
+### Objective
+
+Extend the existing Week 1 Go node application with a REST API that supports retrieving and updating a simulated node status through HTTP GET and POST operations.
+
+The implementation must validate incoming JSON, enforce a maximum request body size of 4096 bytes, return appropriate HTTP status codes and prevent invalid requests from modifying existing application state.
+
+### Implementation completed
+
+**1. Week 2 integration**
+
+Integrated the new Week 2 files into the existing project:
+
+- `internal/httpapi/rest.go`
+- `internal/httpapi/rest_test.go`
+- `internal/state/status.go`
+- `examples/jsonmodel/main.go`
+- JSON request fixtures in `testdata/`
+
+Updated `internal/app/stage.go` to register the `/v1/status` endpoint while preserving the Week 1 `/healthz` functionality.
+
+**2. JSON request decoder — `DecodeOne()`**
+
+Implemented the `W02_DECODE` requirement in `internal/httpapi/rest.go`.
+
+The decoder:
+
+- Validates the `Content-Type` header.
+- Accepts `application/json` with supported parameters.
+- Enforces a 4096-byte request body limit.
+- Rejects malformed JSON, null values and arrays.
+- Rejects unknown JSON fields.
+- Rejects multiple JSON values and trailing non-whitespace content.
+- Returns structured errors without modifying application state.
+
+**3. REST status handler — `StatusResource()`**
+
+Implemented the `W02_STATUS` requirement.
+
+The handler supports:
+
+- `GET /v1/status` — retrieves the current simulated status.
+- `POST /v1/status` — validates and updates the simulated status.
+- Unsupported HTTP methods — returns HTTP 405 with an `Allow` header.
+
+Only `healthy` and `degraded` are permitted status values.
+
+**4. Status management**
+
+Used the supplied `internal/state/status.go` implementation.
+
+The status store uses `sync.RWMutex` to synchronize reads and writes. Status updates are performed only after request decoding and validation.
+
+### Tests executed
+
+**Test 1 — Build verification**
+
+Command:
+
+`go build ./...`
+
+Result: **PASS**
+
+The project compiled successfully without reported errors.
+
+**Test 2 — Week 2 REST API tests**
+
+Command:
+
+`go test ./internal/httpapi -run "^TestWeek02_" -v -count=1`
+
+Result: **PASS — 13 of 13 supplied subtests passed.**
+
+Verified scenarios included successful GET and POST requests, JSON charset parameters, malformed requests, unknown fields, invalid values, multiple JSON objects, null and array inputs, unsupported media types, oversized bodies and unsupported methods.
+
+**Test 3 — Full project regression tests**
+
+Command:
+
+`go test ./... -count=1 -timeout 20s`
+
+Result: **PASS**
+
+All packages with tests passed. No failures were reported.
+
+### Problems encountered and resolution
+
+**Problem:** All 13 Week 2 REST subtests initially failed with HTTP 501.
+
+**Cause:** `StatusResource()` still contained the supplied `TODO W02_STATUS` placeholder.
+
+**Resolution:** Implemented GET, POST and unsupported-method handling. Reran the tests and confirmed all 13 subtests passed.
+
+### Current status
+
+The REST API implementation passes the supplied automated tests and the complete project test suite.
+
+### Remaining work
+
+- Document the complete REST API contract.
+- Perform live HTTP testing against running nodes.
+- Add an independent request-boundary test.
+- Run `go vet ./...`.
+- Save actual test transcripts.
+- Document HTTP design rationale.
+- Create the Week 2 Git checkpoint after completing verification.
+
+
+### Task 2.6 — Independent Boundary Test
+
+**Date:** 18 October 2026
+
+**File created:** `internal/httpapi/rest_boundary_test.go`
+
+Implemented `TestWeek02_EmptyBodyPreservesState` to independently verify that an empty JSON POST request is rejected without changing the existing node status.
+
+**Test procedure:**
+
+1. Initialize a new status store.
+2. Set its status to `degraded`.
+3. Send a POST request to `/v1/status` with `Content-Type: application/json` and an empty body.
+4. Assert that the server returns HTTP 400.
+5. Assert that the stored status remains `degraded`.
+
+**Results:**
+
+- Independent boundary test: PASS
+- Full project regression suite: PASS
+- Static analysis (`go vet ./...`): No errors reported in the provided output
+
+**Conclusion:** The implementation rejects an empty JSON request and preserves the previously stored valid state.
