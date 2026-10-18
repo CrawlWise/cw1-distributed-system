@@ -1,0 +1,31 @@
+[33mtag week02[m
+Tagger: Albert Eromosele <logixseven@gmail.com>
+Date:   Sun Oct 18 13:55:46 2026 +0100
+
+Week 2 REST API milestone completed
+
+[33mcommit f8dc67d412bbb3aa889b74eb6ccf2b20f65e5e4e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mweek02[m[33m, [m[1;33mtag: [m[1;33mweek02[m[33m)[m
+Author: Albert Eromosele <logixseven@gmail.com>
+Date:   Sun Oct 18 13:55:31 2026 +0100
+
+    Complete Week 2 REST API and validation tests
+
+ evidence/week02/evidence-record.md         | 29 [32m++++++++++++++++[m
+ evidence/week02/live-api-tests.txt         |  0
+ evidence/week02/node-isolation-tests.txt   |  0
+ source/.gitignore                          |  6 [32m++++[m
+ source/Makefile                            | 11 [32m+++++++[m
+ source/NOTICE.md                           |  7 [32m++++[m
+ source/README.md                           | 27 [32m+++++++++++++++[m
+ source/cmd/node/main.go                    | 29 [32m++++++++++++++++[m
+ source/cmd/request/main.go                 | 53 [32m++++++++++++++++++++++++++++++[m
+ source/examples/firstfunction/main.go      | 24 [32m++++++++++++++[m
+ source/examples/firstfunction/main_test.go | 13 [32m++++++++[m
+ source/go.mod                              |  3 [32m++[m
+ source/scripts/check.ps1                   | 12 [32m+++++++[m
+ source/scripts/check.sh                    |  8 [32m+++++[m
+ source/scripts/run-node-a.ps1              | 11 [32m+++++++[m
+ source/scripts/run-node-a.sh               |  6 [32m++++[m
+ source/scripts/run-node-b.ps1              | 11 [32m+++++++[m
+ source/scripts/run-node-b.sh               |  6 [32m++++[m
+ 18 files changed, 256 insertions(+)
