@@ -1,0 +1,36 @@
+=== RUN   TestWeek04_ServerRejectsOversizeTCP
+2026/10/18 17:01:54 TCP frame rejected: invalid frame length
+--- PASS: TestWeek04_ServerRejectsOversizeTCP (0.00s)
+=== RUN   TestWeek04_UDPDropAndDeadline
+2026/10/18 17:01:54 UDP JSON rejected: invalid character 'm' looking for beginning of object key string
+--- PASS: TestWeek04_UDPDropAndDeadline (0.15s)
+=== RUN   TestWeek04_RoundTrips
+=== RUN   TestWeek04_RoundTrips/tcp
+=== RUN   TestWeek04_RoundTrips/udp
+--- PASS: TestWeek04_RoundTrips (0.01s)
+    --- PASS: TestWeek04_RoundTrips/tcp (0.00s)
+    --- PASS: TestWeek04_RoundTrips/udp (0.00s)
+=== RUN   TestWeek04_CancelledClient
+--- PASS: TestWeek04_CancelledClient (0.00s)
+=== RUN   TestWeek04_FrameFragmentation
+--- PASS: TestWeek04_FrameFragmentation (0.00s)
+=== RUN   TestWeek04_FrameLimits
+--- PASS: TestWeek04_FrameLimits (0.00s)
+=== RUN   TestWeek04_InvalidMessage
+--- PASS: TestWeek04_InvalidMessage (0.00s)
+=== RUN   TestWeek04_MessageValidationBoundaries
+=== RUN   TestWeek04_MessageValidationBoundaries/empty_text
+=== RUN   TestWeek04_MessageValidationBoundaries/invalid_request_ID
+=== RUN   TestWeek04_MessageValidationBoundaries/text_exceeds_512_bytes
+--- PASS: TestWeek04_MessageValidationBoundaries (0.00s)
+    --- PASS: TestWeek04_MessageValidationBoundaries/empty_text (0.00s)
+    --- PASS: TestWeek04_MessageValidationBoundaries/invalid_request_ID (0.00s)
+    --- PASS: TestWeek04_MessageValidationBoundaries/text_exceeds_512_bytes (0.00s)
+=== RUN   TestWeek04_IncompleteFrames
+=== RUN   TestWeek04_IncompleteFrames/incomplete_header
+=== RUN   TestWeek04_IncompleteFrames/incomplete_body
+--- PASS: TestWeek04_IncompleteFrames (0.00s)
+    --- PASS: TestWeek04_IncompleteFrames/incomplete_header (0.00s)
+    --- PASS: TestWeek04_IncompleteFrames/incomplete_body (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/ipc	1.737s

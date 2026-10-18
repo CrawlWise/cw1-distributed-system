@@ -1,0 +1,8 @@
+=== RUN   TestWeek03_Registry
+--- PASS: TestWeek03_Registry (0.00s)
+=== RUN   TestWeek03_ConcurrentRegistry
+--- PASS: TestWeek03_ConcurrentRegistry (0.00s)
+=== RUN   TestWeek03_InvalidPeer
+--- PASS: TestWeek03_InvalidPeer (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/state	1.656s

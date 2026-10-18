@@ -1,0 +1,6 @@
+=== RUN   TestWeek03_PeerAPI
+    peers_test.go:19: want 201 got 501 {"error":"TODO W03_PEER_HTTP"}
+--- FAIL: TestWeek03_PeerAPI (0.00s)
+FAIL
+FAIL	example.edu/6cc545/cw1/internal/httpapi	1.218s
+FAIL

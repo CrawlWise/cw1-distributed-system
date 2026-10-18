@@ -1,0 +1,10 @@
+=== RUN   TestWeek03_PeerAPI
+--- PASS: TestWeek03_PeerAPI (0.00s)
+=== RUN   TestWeek03_PeerAPIGet
+--- PASS: TestWeek03_PeerAPIGet (0.00s)
+=== RUN   TestWeek03_PeerAPIInvalid
+--- PASS: TestWeek03_PeerAPIInvalid (0.00s)
+=== RUN   TestWeek03_PeerAPIMethodNotAllowed
+--- PASS: TestWeek03_PeerAPIMethodNotAllowed (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/httpapi	1.293s

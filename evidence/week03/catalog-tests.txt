@@ -1,0 +1,8 @@
+=== RUN   TestWeek03_Catalog
+--- PASS: TestWeek03_Catalog (0.00s)
+=== RUN   TestWeek03_CatalogDuplicateNames
+--- PASS: TestWeek03_CatalogDuplicateNames (0.00s)
+=== RUN   TestWeek03_CatalogEmpty
+--- PASS: TestWeek03_CatalogEmpty (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/state	1.670s
