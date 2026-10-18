@@ -518,3 +518,111 @@ Implemented `TestWeek02_EmptyBodyPreservesState` to independently verify that an
 - Static analysis (`go vet ./...`): No errors reported in the provided output
 
 **Conclusion:** The implementation rejects an empty JSON request and preserves the previously stored valid state.
+
+
+### Week 3 — Task 3.2: Peer and File Metadata Validation
+
+**Objective:** Implement domain-level validation for peer records and file metadata before introducing shared-state management.
+
+**Files modified:**
+- `internal/model/model.go`
+- `internal/model/model_test.go`
+
+**Implementation completed:**
+
+1. Implemented `Peer.Validate()` using the existing `config.ValidID()` and `config.ValidAddress()` helpers.
+2. Restricted peer statuses to `unknown`, `online`, and `offline`.
+3. Implemented `FileMetadata.Validate()` to check filenames, file sizes, modification timestamps, and SHA-256 representations.
+4. Added peer validation tests covering invalid IDs, invalid HTTP and gRPC addresses, invalid statuses, and missing statuses.
+5. Added an IPv6 loopback validation test.
+
+**Design decisions:**
+
+- Validation is implemented in the domain model rather than HTTP handlers, allowing reuse by future transport layers.
+- Peer addresses are checked for valid loopback syntax; validation does not establish connectivity.
+- File metadata validation checks the format of SHA-256 values, not the contents of actual files.
+
+**Status:** Metadata validation passed. Peer and IPv6 validation tests passed in an earlier run. Combined regression verification pending.
+
+
+### Week 3 — Task 3.4: File Metadata Catalogue
+
+**Objective:** Implement a concurrency-safe in-memory catalogue for validated file metadata.
+
+**Files modified:**
+- `internal/state/catalog.go`
+- `internal/state/catalog_test.go`
+
+**Implementation completed:**
+
+1. Implemented `Catalog.Replace()` to validate metadata before replacing stored records.
+2. Added duplicate filename detection.
+3. Implemented atomic collection replacement using `sync.RWMutex`.
+4. Sorted metadata records alphabetically by filename.
+5. Implemented `Catalog.Snapshot()` to return an independent copy of stored metadata.
+6. Added tests for duplicate filenames and empty catalogue snapshots.
+
+**Design decisions:**
+
+- The catalogue stores metadata, not file contents.
+- Invalid replacement requests leave the existing collection unchanged.
+- Input records are copied to prevent callers from modifying stored data.
+- Read locks protect snapshots; write locks protect collection replacement.
+- Each node maintains its own catalogue independently.
+
+**Verification:**
+
+- Catalogue tests: 3 passed.
+- Complete Week 3 state tests: 7 passed.
+- Race-enabled state tests: PASS.
+
+**Status:** Completed.
+
+-------------------------------------------------------------------------------
+## Week 3 — Model State and Protect Shared Data
+
+### Implementation Summary
+
+**Task 3.1 — Architecture**
+
+Defined the intended process-local state ownership model, including application composition, HTTP handlers, peer registry, file catalogue, and independent node processes.
+
+**Task 3.2 — Data Models**
+
+Implemented validation for peer identifiers, loopback network addresses, peer status values, filenames, file sizes, timestamps, and SHA-256 metadata.
+
+**Task 3.3 — Peer Registry**
+
+Implemented concurrency-safe peer insertion, duplicate-ID detection, lookup, and sorted independent snapshots.
+
+**Task 3.4 — File Catalogue**
+
+Implemented validated, atomic metadata replacement, duplicate filename detection, sorted storage, and defensive snapshots.
+
+**Task 3.5 — HTTP Integration**
+
+Implemented peer registration and listing endpoints, with appropriate HTTP status codes for successful creation, duplicate peers, invalid requests, and unsupported methods. Exposed the file catalogue through a read-only HTTP endpoint.
+
+**Task 3.6 — Two-Node Integration**
+
+Configured node-specific seed metadata and run scripts for Node A and Node B. The seed-file startup issue was resolved.
+
+The detailed HTTP integration evidence should separately establish successful registration, duplicate rejection, and process-local state isolation.
+
+**Task 3.7 — Verification**
+
+Completed the full Go race-enabled test suite successfully using MSYS2 GCC and CGO.
+
+All packages containing tests passed, and the race detector reported no data races during the exercised execution paths.
+
+### Outstanding Submission Checks
+
+- Confirm that the architecture diagram is saved.
+- Verify that Node A/B HTTP integration evidence is complete.
+- Save the normal full-suite test output.
+- Review the README and evidence records.
+- Create the Week 3 Git checkpoint.
+
+### Conclusion
+
+Week 3 introduces validated data models and concurrency-safe process-local state. These components provide the foundation for subsequent distributed communication features.
