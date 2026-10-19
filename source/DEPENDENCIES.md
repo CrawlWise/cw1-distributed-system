@@ -26,9 +26,8 @@ protoc --version
 go env CGO_ENABLED CC
 ```
 
-**Actual `go version`:** _Record from local terminal_
-
-**Actual `protoc --version`:** _Record from local terminal_
+**Actual `go version`:** go1.27.1
+**Actual `protoc --version`:** libprotoc 36.2
 
 ## Generate bindings
 
