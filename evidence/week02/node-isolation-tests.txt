@@ -1,0 +1,47 @@
+
+WEEK 02 — NODE ISOLATION TEST EVIDENCE
+Date: 18 October 2026
+Project: CW1 Distributed System
+
+Objective:
+Verify that Node A and Node B maintain independent local status values.
+
+--------------------------------------------------
+TEST 1: GET NODE B STATUS
+--------------------------------------------------
+
+Command:
+go run ./cmd/request -url http://127.0.0.1:8082/v1/status
+
+Actual Output:
+HTTP 200
+Content-Type: application/json
+{"status":"healthy"}
+
+Result: PASS
+
+--------------------------------------------------
+TEST 2: GET NODE A STATUS
+--------------------------------------------------
+
+Command:
+go run ./cmd/request -url http://127.0.0.1:8081/v1/status
+
+Actual Output:
+HTTP 200
+Content-Type: application/json
+{"status":"degraded"}
+
+Result: PASS
+
+--------------------------------------------------
+CONCLUSION
+--------------------------------------------------
+
+Node A returned "degraded".
+Node B returned "healthy".
+
+The observed results demonstrate that both running
+nodes maintained different local status values.
+
+Overall Result: PASS

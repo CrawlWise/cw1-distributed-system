@@ -1,0 +1,24 @@
+o run ./cmd/request -url http://127.0.0.1:8081/v1/status
+HTTP 200
+Content-Type: application/json
+{"status":"healthy"}
+PS C:\workspace\cw1-distributed-system\source> go run ./cmd/request -url http://127.0.0.1:8081/v1/status -method POST -file testdata/status-degraded.json
+HTTP 200
+Content-Type: application/json
+{"status":"degraded"}
+PS C:\workspace\cw1-distributed-system\source> go run ./cmd/request -url http://127.0.0.1:8081/v1/status
+HTTP 200
+Content-Type: application/json
+{"status":"degraded"}
+PS C:\workspace\cw1-distributed-system\source> go run ./cmd/request -url http://127.0.0.1:8081/healthz
+HTTP 200
+Content-Type: application/json; charset=utf-8
+{"node_id":"node-a","status":"ok"}
+PS C:\workspace\cw1-distributed-system\source> go run ./cmd/request -url http://127.0.0.1:8081/v1/status -method POST -file testdata/status-malformed.json -expect 400
+HTTP 400
+Content-Type: application/json; charset=utf-8
+{"error":"invalid_json"}
+PS C:\workspace\cw1-distributed-system\source> go run ./cmd/request -url http://127.0.0.1:8081/v1/status
+HTTP 200
+Content-Type: application/json
+{"status":"degraded"}

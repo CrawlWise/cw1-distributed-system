@@ -1,0 +1,8 @@
+=== RUN   TestWeek04_TCPIncompleteFrameTimeout
+2026/10/18 17:15:07 TCP frame rejected: read tcp 127.0.0.1:55481->127.0.0.1:55482: i/o timeout
+--- PASS: TestWeek04_TCPIncompleteFrameTimeout (0.11s)
+=== RUN   TestWeek04_TCPServerRecoversAfterMalformedFrame
+2026/10/18 17:15:07 TCP frame rejected: invalid frame length
+--- PASS: TestWeek04_TCPServerRecoversAfterMalformedFrame (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/ipc	1.750s

@@ -1,0 +1,32 @@
+=== NODE A FILES ===
+{
+    "value":  [
+                  {
+                      "name":  "alpha.txt",
+                      "size":  18,
+                      "sha256":  "de48a92e8b78dfa9288813be0bf4873d721e3bf816e90ab8d5dad1153498c36d",
+                      "modified_unix":  1700000000
+                  }
+              ],
+    "Count":  1
+}
+=== NODE B FILES ===
+{
+    "value":  [
+                  {
+                      "name":  "diagram.txt",
+                      "size":  25,
+                      "sha256":  "197756bc66616e3c2a0ffa39792ccbfc157ab7c6efb5b0be7cbc365ee340e613",
+                      "modified_unix":  1700000000
+                  },
+                  {
+                      "name":  "notes.txt",
+                      "size":  18,
+                      "sha256":  "8895c34adeae582850912eef46cc1cc04a80756f5f21dbea1dbbe6445cf31a6b",
+                      "modified_unix":  1700000000
+                  }
+              ],
+    "Count":  2
+}
+=== REGISTER NODE B WITH NODE A ===
+Attempt A parameter cannot be found that matches parameter name 'SkipHttpErrorCheck'. failed: A parameter cannot be found that matches parameter name 'SkipHttpErrorCheck'.

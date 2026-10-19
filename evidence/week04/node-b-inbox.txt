@@ -1,0 +1,3 @@
+HTTP 200
+Content-Type: application/json; charset=utf-8
+[{"version":1,"request_id":"tcp-1","node_id":"node-a","text":"hello"},{"version":1,"request_id":"udp-1","node_id":"node-a","text":"hello"},{"version":1,"request_id":"tcp-1","node_id":"node-a","text":"hello"},{"version":1,"request_id":"udp-1","node_id":"node-a","text":"hello"}]

@@ -1,0 +1,6 @@
+=== RUN   TestWeek03_Catalog
+    catalog_test.go:13: TODO W03_CATALOG_REPLACE
+--- FAIL: TestWeek03_Catalog (0.00s)
+FAIL
+FAIL	example.edu/6cc545/cw1/internal/state	1.644s
+FAIL

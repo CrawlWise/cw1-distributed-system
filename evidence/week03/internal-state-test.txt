@@ -1,0 +1,64 @@
+=== RUN   TestWeek03_Catalog
+    catalog_test.go:13: TODO W03_CATALOG_REPLACE
+--- FAIL: TestWeek03_Catalog (0.00s)
+=== RUN   TestWeek03_Registry
+    registry_test.go:18: TODO W03_ADD
+--- FAIL: TestWeek03_Registry (0.00s)
+=== RUN   TestWeek03_ConcurrentRegistry
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:41: TODO W03_ADD
+    registry_test.go:48: want 50 peers, got 0
+--- FAIL: TestWeek03_ConcurrentRegistry (0.00s)
+=== RUN   TestWeek03_InvalidPeer
+--- PASS: TestWeek03_InvalidPeer (0.00s)
+FAIL
+FAIL	example.edu/6cc545/cw1/internal/state	0.797s
+FAIL

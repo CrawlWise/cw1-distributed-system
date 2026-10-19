@@ -4,13 +4,18 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"example.edu/6cc545/cw1/internal/config"
-	"example.edu/6cc545/cw1/internal/httpapi"
-	"example.edu/6cc545/cw1/internal/model"
-	"example.edu/6cc545/cw1/internal/state"
 	"io"
+	"log"
+	"net"
 	"net/http"
 	"os"
+	"sync"
+
+	"example.edu/6cc545/cw1/internal/config"
+	"example.edu/6cc545/cw1/internal/httpapi"
+	"example.edu/6cc545/cw1/internal/ipc"
+	"example.edu/6cc545/cw1/internal/model"
+	"example.edu/6cc545/cw1/internal/state"
 )
 
 func loadSeed(c *state.Catalog, path string) error {
@@ -47,13 +52,73 @@ func base(c config.Config, mux *http.ServeMux) (*state.Registry, *state.Catalog,
 	return reg, cat, nil
 }
 
+// Socket setup/ownership is supplied; core protocol functions are student work.
+func wireIPC(ctx context.Context, c config.Config, mux *http.ServeMux) (func(), error) {
+	ctx, cancel := context.WithCancel(ctx)
+	var wg sync.WaitGroup
+	var closers []io.Closer
+	inbox := state.NewInbox()
+	mux.HandleFunc("/v1/messages", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "GET" {
+			httpapi.ErrorJSON(w, 405, "method_not_allowed")
+			return
+		}
+		httpapi.WriteJSON(w, 200, inbox.Snapshot())
+	})
+	cleanup := func() {
+		cancel()
+		for _, x := range closers {
+			_ = x.Close()
+		}
+		wg.Wait()
+	}
+	if c.TCP != "" {
+		ln, e := net.Listen("tcp", c.TCP)
+		if e != nil {
+			cleanup()
+			return nil, e
+		}
+		closers = append(closers, ln)
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if e := ipc.ServeTCP(ctx, ln, c.ID, c.Timeout, inbox.Record); e != nil && ctx.Err() == nil {
+				log.Printf("TCP service stopped: %v", e)
+			}
+		}()
+	}
+	if c.UDP != "" {
+		a, e := net.ResolveUDPAddr("udp", c.UDP)
+		if e != nil {
+			cleanup()
+			return nil, e
+		}
+		s, e := net.ListenUDP("udp", a)
+		if e != nil {
+			cleanup()
+			return nil, e
+		}
+		closers = append(closers, s)
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if e := ipc.ServeUDP(ctx, s, c.ID, c.Timeout, inbox.Record); e != nil && ctx.Err() == nil {
+				log.Printf("UDP service stopped: %v", e)
+			}
+		}()
+	}
+	return cleanup, nil
+}
+
 func CheckStage(c config.Config) error {
-	if c.TCP != "" || c.UDP != "" || c.GRPC != "" {
-		return errors.New("Week 3: IPC and RPC are not enabled")
+	if c.GRPC != "" {
+		return errors.New("Week 4: gRPC is enabled in Week 5")
 	}
 	return nil
 }
 func Wire(ctx context.Context, c config.Config, mux *http.ServeMux) (func(), error) {
-	_, _, e := base(c, mux)
-	return func() {}, e
+	if _, _, e := base(c, mux); e != nil {
+		return nil, e
+	}
+	return wireIPC(ctx, c, mux)
 }
