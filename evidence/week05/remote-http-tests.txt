@@ -1,0 +1,24 @@
+=== RUN   TestWeek05_RemoteHTTPValidation
+=== RUN   TestWeek05_RemoteHTTPValidation/missing_peer_ID
+=== RUN   TestWeek05_RemoteHTTPValidation/malformed_peer_ID
+=== RUN   TestWeek05_RemoteHTTPValidation/unknown_peer
+=== RUN   TestWeek05_RemoteHTTPValidation/wrong_method
+--- PASS: TestWeek05_RemoteHTTPValidation (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPValidation/missing_peer_ID (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPValidation/malformed_peer_ID (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPValidation/unknown_peer (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPValidation/wrong_method (0.00s)
+=== RUN   TestWeek05_RemoteHTTPSuccess
+--- PASS: TestWeek05_RemoteHTTPSuccess (0.01s)
+=== RUN   TestWeek05_RemoteHTTPEmptyCatalogue
+--- PASS: TestWeek05_RemoteHTTPEmptyCatalogue (0.00s)
+=== RUN   TestWeek05_RemoteHTTPRPCErrorMapping
+=== RUN   TestWeek05_RemoteHTTPRPCErrorMapping/invalid_argument
+=== RUN   TestWeek05_RemoteHTTPRPCErrorMapping/unavailable
+=== RUN   TestWeek05_RemoteHTTPRPCErrorMapping/deadline_exceeded
+--- PASS: TestWeek05_RemoteHTTPRPCErrorMapping (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPRPCErrorMapping/invalid_argument (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPRPCErrorMapping/unavailable (0.00s)
+    --- PASS: TestWeek05_RemoteHTTPRPCErrorMapping/deadline_exceeded (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/httpapi	4.937s

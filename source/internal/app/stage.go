@@ -4,18 +4,21 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	pb "example.edu/6cc545/cw1/api/files/v1"
+	"example.edu/6cc545/cw1/internal/config"
+	"example.edu/6cc545/cw1/internal/httpapi"
+	"example.edu/6cc545/cw1/internal/ipc"
+	"example.edu/6cc545/cw1/internal/model"
+	"example.edu/6cc545/cw1/internal/rpcfiles"
+	"example.edu/6cc545/cw1/internal/state"
+	"google.golang.org/grpc"
 	"io"
 	"log"
 	"net"
 	"net/http"
 	"os"
 	"sync"
-
-	"example.edu/6cc545/cw1/internal/config"
-	"example.edu/6cc545/cw1/internal/httpapi"
-	"example.edu/6cc545/cw1/internal/ipc"
-	"example.edu/6cc545/cw1/internal/model"
-	"example.edu/6cc545/cw1/internal/state"
+	"time"
 )
 
 func loadSeed(c *state.Catalog, path string) error {
@@ -110,15 +113,45 @@ func wireIPC(ctx context.Context, c config.Config, mux *http.ServeMux) (func(), 
 	return cleanup, nil
 }
 
-func CheckStage(c config.Config) error {
-	if c.GRPC != "" {
-		return errors.New("Week 4: gRPC is enabled in Week 5")
-	}
-	return nil
-}
+func CheckStage(c config.Config) error { return nil }
 func Wire(ctx context.Context, c config.Config, mux *http.ServeMux) (func(), error) {
-	if _, _, e := base(c, mux); e != nil {
+	reg, cat, e := base(c, mux)
+	if e != nil {
 		return nil, e
 	}
-	return wireIPC(ctx, c, mux)
+	stopIPC, e := wireIPC(ctx, c, mux)
+	if e != nil {
+		return nil, e
+	}
+	mux.HandleFunc("/v1/remote-files", httpapi.RemoteFiles(reg, c.ID, c.Timeout))
+	if c.GRPC == "" {
+		return stopIPC, nil
+	}
+	ln, e := net.Listen("tcp", c.GRPC)
+	if e != nil {
+		stopIPC()
+		return nil, e
+	}
+	s := grpc.NewServer(grpc.MaxRecvMsgSize(4096), grpc.MaxSendMsgSize(65536))
+	pb.RegisterFileServiceServer(s, &rpcfiles.Service{NodeID: c.ID, Catalog: cat})
+	done := make(chan struct{})
+	go func() {
+		defer close(done)
+		if e := s.Serve(ln); e != nil && ctx.Err() == nil {
+			log.Printf("gRPC stopped: %v", e)
+		}
+	}()
+	return func() {
+		stopped := make(chan struct{})
+		go func() { s.GracefulStop(); close(stopped) }()
+		select {
+		case <-stopped:
+		case <-time.After(c.Timeout):
+			s.Stop()
+			<-stopped
+		}
+		_ = ln.Close()
+		<-done
+		stopIPC()
+	}, nil
 }

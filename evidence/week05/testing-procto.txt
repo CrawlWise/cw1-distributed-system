@@ -1,0 +1,12 @@
+Exception: C:\workspace\cw1-distributed-system\source\scripts\generate.ps1:6
+Line |
+   6 |  … ontinue)) { throw "Install the module-approved protoc compiler first. …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Install the module-approved protoc compiler first.
+PS C:\workspace\cw1-distributed-system\source> .\scripts\generate.ps1 *> ..\evidence\week05\testing-procto.txt
+Exception: C:\workspace\cw1-distributed-system\source\scripts\generate.ps1:6
+Line |
+   6 |  … ontinue)) { throw "Install the module-approved protoc compiler first. …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Install the module-approved protoc compiler first.
+PS C:\workspace\cw1-distributed-system\source>
