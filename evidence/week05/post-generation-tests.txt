@@ -1,0 +1,21 @@
+?   	example.edu/6cc545/cw1/api/files/v1	[no test files]
+?   	example.edu/6cc545/cw1/cmd/ipcclient	[no test files]
+?   	example.edu/6cc545/cw1/cmd/node	[no test files]
+?   	example.edu/6cc545/cw1/cmd/request	[no test files]
+ok  	example.edu/6cc545/cw1/examples/firstfunction	1.630s
+?   	example.edu/6cc545/cw1/examples/jsonmodel	[no test files]
+ok  	example.edu/6cc545/cw1/internal/app	4.557s
+ok  	example.edu/6cc545/cw1/internal/config	0.801s
+ok  	example.edu/6cc545/cw1/internal/httpapi	3.389s
+ok  	example.edu/6cc545/cw1/internal/ipc	1.268s
+ok  	example.edu/6cc545/cw1/internal/model	0.799s
+--- FAIL: TestWeek05_RemoteList (0.00s)
+    service_test.go:33: rpc error: code = Unimplemented desc = TODO W05_CLIENT
+--- FAIL: TestWeek05_Unavailable (0.00s)
+    service_test.go:56: unexpected status: rpc error: code = Unimplemented desc = TODO W05_CLIENT
+--- FAIL: TestWeek05_Cancelled (0.00s)
+    service_test.go:67: want Canceled got rpc error: code = Unimplemented desc = TODO W05_SERVICE
+FAIL
+FAIL	example.edu/6cc545/cw1/internal/rpcfiles	3.298s
+ok  	example.edu/6cc545/cw1/internal/state	0.813s
+FAIL

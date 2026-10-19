@@ -1,0 +1,21 @@
+
+api\files\v1\files_grpc.pb.go:36:func NewFileServiceClient(cc grpc.ClientConnInterface) FileServiceClient {
+api\files\v1\files_grpc.pb.go:50:// FileServiceServer is the server API for FileService service.
+api\files\v1\files_grpc.pb.go:51:// All implementations must embed UnimplementedFileServiceServer
+api\files\v1\files_grpc.pb.go:53:type FileServiceServer interface {
+api\files\v1\files_grpc.pb.go:55:	mustEmbedUnimplementedFileServiceServer()
+api\files\v1\files_grpc.pb.go:58:// UnimplementedFileServiceServer must be embedded to have
+api\files\v1\files_grpc.pb.go:63:type UnimplementedFileServiceServer struct{}
+api\files\v1\files_grpc.pb.go:65:func (UnimplementedFileServiceServer) ListFiles(context.Context, *ListFilesRequest) (*ListFilesResponse, error) {
+api\files\v1\files_grpc.pb.go:68:func (UnimplementedFileServiceServer) mustEmbedUnimplementedFileServiceServer() {}
+api\files\v1\files_grpc.pb.go:69:func (UnimplementedFileServiceServer) testEmbeddedByValue()                     {}
+api\files\v1\files_grpc.pb.go:71:// UnsafeFileServiceServer may be embedded to opt out of forward compatibility for this service.
+api\files\v1\files_grpc.pb.go:72:// Use of this interface is not recommended, as added methods to FileServiceServer will
+api\files\v1\files_grpc.pb.go:74:type UnsafeFileServiceServer interface {
+api\files\v1\files_grpc.pb.go:75:	mustEmbedUnimplementedFileServiceServer()
+api\files\v1\files_grpc.pb.go:78:func RegisterFileServiceServer(s grpc.ServiceRegistrar, srv FileServiceServer) {
+api\files\v1\files_grpc.pb.go:79:	// If the following call pancis, it indicates UnimplementedFileServiceServer was
+api\files\v1\files_grpc.pb.go:95:		return srv.(FileServiceServer).ListFiles(ctx, in)
+api\files\v1\files_grpc.pb.go:102:		return srv.(FileServiceServer).ListFiles(ctx, req.(*ListFilesRequest))
+api\files\v1\files_grpc.pb.go:112:	HandlerType: (*FileServiceServer)(nil),
+

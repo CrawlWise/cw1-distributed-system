@@ -1,0 +1,11 @@
+=== RUN   TestWeek05_RemoteList
+    service_test.go:33: rpc error: code = Unimplemented desc = TODO W05_CLIENT
+--- FAIL: TestWeek05_RemoteList (0.00s)
+=== RUN   TestWeek05_Unavailable
+    service_test.go:56: unexpected status: rpc error: code = Unimplemented desc = TODO W05_CLIENT
+--- FAIL: TestWeek05_Unavailable (0.00s)
+=== RUN   TestWeek05_Cancelled
+--- PASS: TestWeek05_Cancelled (0.00s)
+FAIL
+FAIL	example.edu/6cc545/cw1/internal/rpcfiles	1.980s
+FAIL

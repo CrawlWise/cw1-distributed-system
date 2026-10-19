@@ -1,0 +1,62 @@
+FAIL	example.edu/6cc545/cw1/cmd/node [setup failed]
+# example.edu/6cc545/cw1/cmd/node
+internal\rpcfiles\client.go:6:2: no required module provides package google.golang.org/grpc; to add it:
+	go get google.golang.org/grpc
+# example.edu/6cc545/cw1/cmd/node
+internal\rpcfiles\client.go:7:2: no required module provides package google.golang.org/grpc/codes; to add it:
+	go get google.golang.org/grpc/codes
+# example.edu/6cc545/cw1/cmd/node
+internal\rpcfiles\client.go:8:2: no required module provides package google.golang.org/grpc/credentials/insecure; to add it:
+	go get google.golang.org/grpc/credentials/insecure
+# example.edu/6cc545/cw1/cmd/node
+internal\rpcfiles\client.go:9:2: no required module provides package google.golang.org/grpc/status; to add it:
+	go get google.golang.org/grpc/status
+# example.edu/6cc545/cw1/internal/app
+internal\rpcfiles\client.go:6:2: no required module provides package google.golang.org/grpc; to add it:
+	go get google.golang.org/grpc
+FAIL	example.edu/6cc545/cw1/internal/app [setup failed]
+# example.edu/6cc545/cw1/internal/app
+internal\rpcfiles\client.go:7:2: no required module provides package google.golang.org/grpc/codes; to add it:
+	go get google.golang.org/grpc/codes
+# example.edu/6cc545/cw1/internal/app
+internal\rpcfiles\client.go:8:2: no required module provides package google.golang.org/grpc/credentials/insecure; to add it:
+	go get google.golang.org/grpc/credentials/insecure
+# example.edu/6cc545/cw1/internal/app
+internal\rpcfiles\client.go:9:2: no required module provides package google.golang.org/grpc/status; to add it:
+	go get google.golang.org/grpc/status
+# example.edu/6cc545/cw1/internal/httpapi
+internal\rpcfiles\client.go:6:2: no required module provides package google.golang.org/grpc; to add it:
+	go get google.golang.org/grpc
+# example.edu/6cc545/cw1/internal/httpapi
+internal\rpcfiles\client.go:7:2: no required module provides package google.golang.org/grpc/codes; to add it:
+	go get google.golang.org/grpc/codes
+# example.edu/6cc545/cw1/internal/httpapi
+internal\rpcfiles\client.go:8:2: no required module provides package google.golang.org/grpc/credentials/insecure; to add it:
+	go get google.golang.org/grpc/credentials/insecure
+# example.edu/6cc545/cw1/internal/httpapi
+internal\rpcfiles\client.go:9:2: no required module provides package google.golang.org/grpc/status; to add it:
+	go get google.golang.org/grpc/status
+FAIL	example.edu/6cc545/cw1/internal/httpapi [setup failed]
+# example.edu/6cc545/cw1/internal/rpcfiles
+internal\rpcfiles\client.go:6:2: no required module provides package google.golang.org/grpc; to add it:
+	go get google.golang.org/grpc
+FAIL	example.edu/6cc545/cw1/internal/rpcfiles [setup failed]
+# example.edu/6cc545/cw1/internal/rpcfiles
+internal\rpcfiles\client.go:7:2: no required module provides package google.golang.org/grpc/codes; to add it:
+	go get google.golang.org/grpc/codes
+# example.edu/6cc545/cw1/internal/rpcfiles
+internal\rpcfiles\client.go:8:2: no required module provides package google.golang.org/grpc/credentials/insecure; to add it:
+	go get google.golang.org/grpc/credentials/insecure
+# example.edu/6cc545/cw1/internal/rpcfiles
+internal\rpcfiles\client.go:9:2: no required module provides package google.golang.org/grpc/status; to add it:
+	go get google.golang.org/grpc/status
+?   	example.edu/6cc545/cw1/api/files/v1	[no test files]
+?   	example.edu/6cc545/cw1/cmd/ipcclient	[no test files]
+?   	example.edu/6cc545/cw1/cmd/request	[no test files]
+ok  	example.edu/6cc545/cw1/examples/firstfunction	2.135s
+?   	example.edu/6cc545/cw1/examples/jsonmodel	[no test files]
+ok  	example.edu/6cc545/cw1/internal/config	2.161s
+ok  	example.edu/6cc545/cw1/internal/ipc	2.776s
+ok  	example.edu/6cc545/cw1/internal/model	1.727s
+ok  	example.edu/6cc545/cw1/internal/state	1.986s
+FAIL

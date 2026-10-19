@@ -1,0 +1,8 @@
+=== RUN   TestWeek05_RemoteList
+--- PASS: TestWeek05_RemoteList (0.01s)
+=== RUN   TestWeek05_Unavailable
+--- PASS: TestWeek05_Unavailable (0.00s)
+=== RUN   TestWeek05_Cancelled
+--- PASS: TestWeek05_Cancelled (0.00s)
+PASS
+ok  	example.edu/6cc545/cw1/internal/rpcfiles	4.356s

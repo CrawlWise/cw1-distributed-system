@@ -1,0 +1,13 @@
+?   	example.edu/6cc545/cw1/api/files/v1	[no test files]
+?   	example.edu/6cc545/cw1/cmd/ipcclient	[no test files]
+?   	example.edu/6cc545/cw1/cmd/node	[no test files]
+?   	example.edu/6cc545/cw1/cmd/request	[no test files]
+ok  	example.edu/6cc545/cw1/examples/firstfunction	1.397s
+?   	example.edu/6cc545/cw1/examples/jsonmodel	[no test files]
+ok  	example.edu/6cc545/cw1/internal/app	3.212s
+ok  	example.edu/6cc545/cw1/internal/config	1.319s
+ok  	example.edu/6cc545/cw1/internal/httpapi	2.566s
+ok  	example.edu/6cc545/cw1/internal/ipc	1.663s
+ok  	example.edu/6cc545/cw1/internal/model	1.303s
+ok  	example.edu/6cc545/cw1/internal/rpcfiles	3.006s
+ok  	example.edu/6cc545/cw1/internal/state	1.314s
